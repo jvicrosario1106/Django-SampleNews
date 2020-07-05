@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        
+        *{
+            padding:0;
+            margin:0;
+            box-sizing: 0;
+        }
+        body{
+            min-height: 100vh;
+            font-family: 'Lato', sans-serif;
+        }
+        .nav-wrapper{
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            background-color:#1B9CFC;
+            min-height: 9vh;
+        
+        }
+        .nav-wrapper h4{
+            color:white;
+            font-size:40px;
+        }
+        nav ul{
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            list-style: none;
+        }
+        nav ul li{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 8rem;
+            font-size: 20px;
+            
+        }
+
+        nav ul li a{
+            color:white;
+            text-decoration: none;
+            padding:5px 10px;
+            border-radius: 5px;
+        }
+        nav ul li a:hover{
+            background: rgba(44, 58, 71,0.3);
+            transition: 0.5s ease-in;
+        }
+          
+        nav ul li a.active{
+            background: rgba(44, 58, 71,0.3);
+            text-decoration: underline;
+
+        }
+        
+        input[type="search"]{
+            border:none;
+            outline:none;
+            width: 25rem;
+            height:2.5rem;
+            padding: 10px 10px;
+            font-size:20px;
+            border-radius:15px;
+        }
+        
+        .news-headlines{
+            display: grid;
+            place-items: center;
+            margin-top:3rem 0rem;
+            
+        }
+        .news-headlines h2{
+            text-align: center;
+            width: 50%;
+            margin: 3rem 0rem;
+        }
+        .news-headlines img{
+            width: 50%;
+            border: 1px solid black;
+            
+        }
+        .news-headlines a{
+            text-align: center;
+            width: 50%;
+            margin-top:10px;
+            font-style:italic;
+        }
+        .news-headlines h4{
+            width:50%;
+            margin-top:10px;
+            border-bottom: 3px solid black;
+        }
+
+        
+    </style>
+    
+</head>
+<body>
+    <div class="nav-wrapper">
+        
+        <h4>News TV</h4>
+   
+<nav>
+    <ul>
+        <li><a href="#" class = "active">Home</a></li>
+        <li><a href="#">Services</a></li>             
+        <li><a href="#">Headlines</a></li>
+        <li><a href="#">Sources</a></li>
+        <li><a href="#">About us</a></li>
+    </ul>
+</nav>
+
+<div>
+<form method="post">
+    {% csrf_token %}
+    <input type="search" name  = news placeholder="Search News...">
+    
+</form>
+</div>
+</div>
+
+<div class = "news-headlines">
+    
+    {% for title, images ,desc,url in news_list%}
+    <h2>{{title}}</h2>
+    <img src="{{images}}" alt="">
+    <a href="{{url}}">{{url}}</a>
+    <h4>{{desc}}</h4>
+    
+    {% endfor %}
+    
+</div>
+
+</body>
+</html>
