@@ -7,7 +7,7 @@ Django==3.0.8
 filelock==3.0.12
 idna==2.10
 newsapi-python==0.2.6
-pipenv==2020.6.2
+pipenv==2022.1.8
 pytz==2020.1
 requests==2.24.0
 six==1.15.0
